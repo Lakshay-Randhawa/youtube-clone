@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import Menu from "./Components/Menu";
 import Navbar from "./Components/Navbar";
+import Homepage from "./Pages/Homepage";
 import { darkTheme, lightTheme } from "./utils/Theme";
 
 const Container = styled.div`
@@ -18,12 +20,18 @@ function App() {
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Container>
+        <BrowserRouter>
         <Menu darkMode={darkMode} setDarkMode={setDarkMode}  />
         <Main>
           <Navbar />
-          <Wrapper></Wrapper>
-          Main Body
+          <Wrapper>
+            <Routes>
+              <Route index={<Homepage />}></Route>
+            </Routes>
+          
+          </Wrapper>   
         </Main>
+        </BrowserRouter>
       </Container>
     </ThemeProvider>
   );
