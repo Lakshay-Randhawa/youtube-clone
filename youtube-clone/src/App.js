@@ -9,6 +9,7 @@ const Container = styled.div`
 `;
 const Main = styled.div`
   flex: 7;
+  background-color: ${({ theme }) => theme.bg};
 `;
 const Wrapper = styled.div``;
 
@@ -17,7 +18,7 @@ function App() {
   return (
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Container>
-        <Menu darkMode setDarkMode />
+        <Menu darkMode={darkMode} setDarkMode={setDarkMode}  />
         <Main>
           <Navbar />
           <Wrapper></Wrapper>
