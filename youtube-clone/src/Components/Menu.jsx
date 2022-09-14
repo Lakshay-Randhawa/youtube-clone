@@ -27,7 +27,6 @@ const Container = styled.div`
   font-size: 14px;
   position: sticky;
   top: 0;
-  border-right: 0.5px solid black
 `;
 const Wrapper = styled.div`
   padding: 18px 26px;

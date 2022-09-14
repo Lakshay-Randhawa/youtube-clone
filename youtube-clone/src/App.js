@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from "styled-components";
 import Menu from "./Components/Menu";
 import Navbar from "./Components/Navbar";
 import Homepage from "./Pages/Homepage";
+import Video from "./Pages/Video";
 import { darkTheme, lightTheme } from "./utils/Theme";
 
 const Container = styled.div`
@@ -21,16 +22,16 @@ function App() {
     <ThemeProvider theme={darkMode ? darkTheme : lightTheme}>
       <Container>
         <BrowserRouter>
-        <Menu darkMode={darkMode} setDarkMode={setDarkMode}  />
-        <Main>
-          <Navbar />
-          <Wrapper>
-            <Routes>
-              <Route index={<Homepage />}></Route>
-            </Routes>
-          
-          </Wrapper>   
-        </Main>
+          <Menu darkMode={darkMode} setDarkMode={setDarkMode} />
+          <Main>
+            <Navbar />
+            <Wrapper>
+              <Routes>
+                <Route path="/" index element={<Homepage />}></Route>
+                <Route path=":id" element={<Video />} ></Route>
+              </Routes>
+            </Wrapper>
+          </Main>
         </BrowserRouter>
       </Container>
     </ThemeProvider>
