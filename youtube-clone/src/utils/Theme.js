@@ -14,4 +14,4 @@ const lightTheme = {
   soft: "#f5f5f5",
 };
 
-export {darkTheme, lightTheme};
+export { darkTheme, lightTheme };
