@@ -53,11 +53,19 @@ const Info = styled.div`
 
 const Card = ({ type }) => {
   return (
-    <Link to="/video/test" style={{ textDecoration: "none" }}>
+    <Link to="/:id" style={{ textDecoration: "none" }}>
       <Container type={type}>
-        <Image type={type} src="" alt="Video Image" />
+        <Image
+          type={type}
+          src="https://i9.ytimg.com/vi_webp/k3Vfj-e1Ma4/mqdefault.webp?v=6277c159&sqp=CIjm8JUG&rs=AOn4CLDeKmf_vlMC1q9RBEZu-XQApzm6sA"
+          alt="Video Image"
+        />
         <Details type={type}>
-          <ChannelImage type={type} src="" alt="Channel Image" />
+          <ChannelImage
+            type={type}
+            src="https://yt3.ggpht.com/yti/APfAmoE-Q0ZLJ4vk3vqmV4Kwp0sbrjxLyB8Q4ZgNsiRH=s88-c-k-c0x00ffffff-no-rj-mo"
+            alt="Channel Image"
+          />
           <Texts>
             <Title>Test Video</Title>
             <ChannelName>Channel Name</ChannelName>
