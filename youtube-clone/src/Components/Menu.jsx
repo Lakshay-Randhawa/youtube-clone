@@ -56,10 +56,12 @@ export const Menu = (props) => {
   return (
     <Container>
       <Wrapper>
-        <Logo>
-          <Img src={logo} />
-          YouTube
-        </Logo>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <Logo>
+            <Img src={logo} />
+            YouTube
+          </Logo>
+        </Link>
         <Item>
           <HomeIcon />
           Home

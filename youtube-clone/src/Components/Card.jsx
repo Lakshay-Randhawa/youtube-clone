@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import placeholder from "../assets/userPlaceHolder.png";
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
@@ -61,11 +62,7 @@ const Card = ({ type }) => {
           alt="Video Image"
         />
         <Details type={type}>
-          <ChannelImage
-            type={type}
-            src="https://yt3.ggpht.com/yti/APfAmoE-Q0ZLJ4vk3vqmV4Kwp0sbrjxLyB8Q4ZgNsiRH=s88-c-k-c0x00ffffff-no-rj-mo"
-            alt="Channel Image"
-          />
+          <ChannelImage type={type} src={placeholder} alt="Channel Image" />
           <Texts>
             <Title>Test Video</Title>
             <ChannelName>Channel Name</ChannelName>
