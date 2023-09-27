@@ -8,6 +8,7 @@ const Container = styled.div`
   position: sticky;
   top: 0;
   background-color: ${({ theme }) => theme.bgLighter};
+  width: 100;
   height: 56px;
 `;
 
