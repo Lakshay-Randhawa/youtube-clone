@@ -52,21 +52,19 @@ const Info = styled.div`
   color: ${({ theme }) => theme.textSoft};
 `;
 
-const Card = ({ type }) => {
+const Card = (props) => {
+  const { type, authorAvatar, title, thumbnail, channelName, views, id } =
+    props;
   return (
     <Link to="/:id" style={{ textDecoration: "none" }}>
       <Container type={type}>
-        <Image
-          type={type}
-          src="https://i9.ytimg.com/vi_webp/k3Vfj-e1Ma4/mqdefault.webp?v=6277c159&sqp=CIjm8JUG&rs=AOn4CLDeKmf_vlMC1q9RBEZu-XQApzm6sA"
-          alt="Video Image"
-        />
+        <Image type={type} src={thumbnail} alt="Video Image" />
         <Details type={type}>
-          <ChannelImage type={type} src={placeholder} alt="Channel Image" />
+          <ChannelImage type={type} src={authorAvatar} alt="Channel Image" />
           <Texts>
-            <Title>Test Video</Title>
-            <ChannelName>Channel Name</ChannelName>
-            <Info>Views</Info>
+            <Title>{title}</Title>
+            <ChannelName>{channelName}</ChannelName>
+            <Info>Views {views}</Info>
           </Texts>
         </Details>
       </Container>

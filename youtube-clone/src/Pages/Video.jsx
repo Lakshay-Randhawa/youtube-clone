@@ -5,7 +5,7 @@ import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutl
 import ReplyOutlinedIcon from "@mui/icons-material/ReplyOutlined";
 import AddTaskOutlinedIcon from "@mui/icons-material/AddTaskOutlined";
 import Comments from "../Components/Comments";
-import Card from "../Components/Card";
+import Card from "../Components/VideoCard";
 import placeholder from "../assets/userPlaceHolder.png";
 
 const Container = styled.div`
