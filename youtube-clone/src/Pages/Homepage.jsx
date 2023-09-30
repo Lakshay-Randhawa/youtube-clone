@@ -14,37 +14,18 @@ const Home = () => {
 
   return (
     <Container>
-      {/* <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card /> */}
-      {dummyData.map(({ video }) => {
+      {dummyData.map(({ video }, index) => {
         const authorAvatar = video.author.avatar[0].url;
         // console.log(video);
         return (
           <VideoCard
-            key={video.id}
+            key={index}
             authorAvatar={authorAvatar}
             title={video.title}
             thumbnail={video.thumbnails[0].url}
-            channelName={video.author.name}
-            views={video.stats.viewers}
+            channelName={video.author.title}
+            publishedAt={video.publishedTimeText}
+            views={video.stats.views | video.stats.viewers}
           />
         );
       })}

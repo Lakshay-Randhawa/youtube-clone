@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import placeholder from "../assets/userPlaceHolder.png";
+import { abbreviateNumber } from "js-abbreviation-number";
 
 const Container = styled.div`
   width: ${(props) => props.type !== "sm" && "360px"};
@@ -43,18 +44,43 @@ const Title = styled.h1`
 
 const ChannelName = styled.h2`
   font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
   color: ${({ theme }) => theme.textSoft};
   margin: 9px 0px;
+  :hover {
+    text-decoration: underline;
+  }
 `;
 
-const Info = styled.div`
+const PublishTime = styled.span`
+  color: ${({ theme }) => theme.textSoft};
+`;
+
+const Info = styled.span`
   font-size: 14px;
   color: ${({ theme }) => theme.textSoft};
 `;
 
+const InfoWrapper = styled.div`
+  display: flex;
+  justify-items: space-between;
+  width: 100%;
+  gap: 10px;
+`;
+
 const Card = (props) => {
-  const { type, authorAvatar, title, thumbnail, channelName, views, id } =
-    props;
+  const {
+    type,
+    authorAvatar,
+    title,
+    thumbnail,
+    channelName,
+    views,
+    id,
+    publishedAt,
+  } = props;
+
   return (
     <Link to="/:id" style={{ textDecoration: "none" }}>
       <Container type={type}>
@@ -64,7 +90,11 @@ const Card = (props) => {
           <Texts>
             <Title>{title}</Title>
             <ChannelName>{channelName}</ChannelName>
-            <Info>Views {views}</Info>
+            <InfoWrapper>
+              <Info>{`${abbreviateNumber(views, 2)} views`}</Info>
+              <PublishTime>{publishedAt}</PublishTime>
+            </InfoWrapper>
+             
           </Texts>
         </Details>
       </Container>
