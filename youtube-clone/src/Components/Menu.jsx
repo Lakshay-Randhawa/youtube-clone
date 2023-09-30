@@ -18,37 +18,7 @@ import FlagOutlinedIcon from "@mui/icons-material/FlagOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
 import { Link } from "react-router-dom";
-
-const items = [
-  {
-    name: "Item 1",
-    icon: <ExploreOutlinedIcon />,
-  },
-  {
-    name: "Item 2",
-    icon: <ExploreOutlinedIcon />,
-  },
-  {
-    name: "Item 3",
-    icon: <ExploreOutlinedIcon />,
-  },
-  {
-    name: "Item 4",
-    icon: <ExploreOutlinedIcon />,
-  },
-  {
-    name: "Item 4",
-    icon: <ExploreOutlinedIcon />,
-  },
-  {
-    name: "Item 4",
-    icon: <ExploreOutlinedIcon />,
-  },
-  {
-    name: "Item 4",
-    icon: <ExploreOutlinedIcon />,
-  },
-];
+import categories from "../assets/constant";
 
 export const Menu = (props) => {
   const { darkMode, setDarkMode } = props;
@@ -62,66 +32,17 @@ export const Menu = (props) => {
             YouTube
           </Logo>
         </Link>
-        <Item>
-          <HomeIcon />
-          Home
-        </Item>
-        <Item>
-          <ExploreOutlinedIcon />
-          Explore
-        </Item>
-        <Item>
-          <SubscriptionsOutlinedIcon />
-          Subscriptions
-        </Item>
-        <Hr />
-        <Item>
-          <VideoLibraryOutlinedIcon />
-          Library
-        </Item>
-        <Item>
-          <HistoryOutlinedIcon />
-          History
-        </Item>
-        <Hr />
-        <Title>Explore</Title>
-        <Item>
-          <LibraryMusicOutlinedIcon />
-          Music
-        </Item>
-        <Item>
-          <SportsBasketballOutlinedIcon />
-          Sports
-        </Item>
-        <Item>
-          <SportsEsportsOutlinedIcon />
-          Gaming
-        </Item>
-        <Item>
-          <MovieOutlinedIcon />
-          Movies
-        </Item>
-        <Item>
-          <ArticleOutlinedIcon />
-          News
-        </Item>
-        <Item>
-          <LiveTvOutlinedIcon />
-          Live
-        </Item>
-        <Hr />
-        <Item>
-          <SettingsOutlinedIcon />
-          Settings
-        </Item>
-        <Item>
-          <FlagOutlinedIcon />
-          Report
-        </Item>
-        <Item>
-          <HelpOutlineOutlinedIcon />
-          Help
-        </Item>
+
+        {categories.map((category, index) => (
+          <>
+            <Item key={index}>
+              {category.icon}
+              {category.name}
+            </Item>
+            {category.divider && <Hr />}
+          </>
+        ))}
+
         <Item onClick={() => setDarkMode(!darkMode)}>
           <SettingsBrightnessOutlinedIcon />
           {darkMode ? "Light" : "Dark"} Mode
