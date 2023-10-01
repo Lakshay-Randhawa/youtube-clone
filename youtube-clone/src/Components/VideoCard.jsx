@@ -82,7 +82,7 @@ const Card = (props) => {
   } = props;
 
   return (
-    <Link to="/:id" style={{ textDecoration: "none" }}>
+    <Link to={`/:${id}`} style={{ textDecoration: "none" }}>
       <Container type={type}>
         <Image type={type} src={thumbnail} alt="Video Image" />
         <Details type={type}>

@@ -16,10 +16,10 @@ const Home = () => {
     <Container>
       {dummyData.map(({ video }, index) => {
         const authorAvatar = video.author.avatar[0].url;
-        // console.log(video);
         return (
           <VideoCard
             key={index}
+            id={video.videoId}
             authorAvatar={authorAvatar}
             title={video.title}
             thumbnail={video.thumbnails[0].url}
