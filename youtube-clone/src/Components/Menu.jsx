@@ -10,7 +10,7 @@ export const Menu = (props) => {
   return (
     <Container>
       <Wrapper>
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/" style={{ textDecoration: "none", color: "white" }}>
           <Logo>
             <Img src={logo} />
             YouTube
