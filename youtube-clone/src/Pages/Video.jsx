@@ -1,4 +1,5 @@
 import React from "react";
+import { useParams } from "react-router";
 import styled from "styled-components";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 import ThumbDownOffAltOutlinedIcon from "@mui/icons-material/ThumbDownOffAltOutlined";
@@ -106,6 +107,12 @@ const Subscribe = styled.button`
 `;
 
 const Video = () => {
+  const { id } = useParams();
+
+  // useEffect(() => {}, [id]);
+
+  const fetchVideoDetails = async () => {};
+
   return (
     <Container>
       <Content>

@@ -1,3 +1,4 @@
+import React from "react";
 import styled from "styled-components";
 import logo from "../img/youtube-logo.png";
 import SettingsBrightnessOutlinedIcon from "@mui/icons-material/SettingsBrightnessOutlined";
@@ -18,13 +19,13 @@ export const Menu = (props) => {
         </Link>
 
         {categories.map((category, index) => (
-          <>
-            <Item key={index}>
+          <React.Fragment key={index}>
+            <Item>
               {category.icon}
               {category.name}
             </Item>
             {category.divider && <Hr />}
-          </>
+          </React.Fragment>
         ))}
 
         <Item onClick={() => setDarkMode(!darkMode)}>

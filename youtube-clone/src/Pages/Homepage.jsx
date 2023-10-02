@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 import VideoCard from "../Components/VideoCard";
-import { useFetchVideos } from "../Hooks/useFetchVideos";
-import videos from "../assets/FetchVideosDummy";
+import { useFetchFeed } from "../Hooks/useFetchFeed";
+import dummyVideos from "../assets/FetchVideosDummy";
+
 const Container = styled.div`
   display: flex;
   justify-content: space-between;
@@ -10,11 +11,16 @@ const Container = styled.div`
 `;
 
 const Home = () => {
-  const dummyData = videos.contents;
+  const dummyData = dummyVideos.contents;
+  const { videos, isLoading } = useFetchFeed();
+
+  console.log({ videos, isLoading });
 
   return (
     <Container>
-      {dummyData.map(({ video }, index) => {
+      {isLoading && <h1>Loading...</h1>}
+
+      {videos.conents.map(({ video }, index) => {
         const authorAvatar = video.author.avatar[0].url;
         return (
           <VideoCard
