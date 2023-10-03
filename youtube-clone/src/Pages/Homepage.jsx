@@ -18,23 +18,25 @@ const Home = () => {
 
   return (
     <Container>
-      {isLoading && <h1>Loading...</h1>}
-
-      {videos.conents.map(({ video }, index) => {
-        const authorAvatar = video.author.avatar[0].url;
-        return (
-          <VideoCard
-            key={index}
-            id={video.videoId}
-            authorAvatar={authorAvatar}
-            title={video.title}
-            thumbnail={video.thumbnails[0].url}
-            channelName={video.author.title}
-            publishedAt={video.publishedTimeText}
-            views={video.stats.views | video.stats.viewers}
-          />
-        );
-      })}
+      {!isLoading ? (
+        videos.map(({ video }, index) => {
+          const authorAvatar = video.author.avatar[0].url;
+          return (
+            <VideoCard
+              key={index}
+              id={video.videoId}
+              authorAvatar={authorAvatar}
+              title={video.title}
+              thumbnail={video.thumbnails[0].url}
+              channelName={video.author.title}
+              publishedAt={video.publishedTimeText}
+              views={video.stats.views | video.stats.viewers}
+            />
+          );
+        })
+      ) : (
+        <h1>Loading...</h1>
+      )}
     </Container>
   );
 };

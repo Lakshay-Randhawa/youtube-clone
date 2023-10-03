@@ -13,7 +13,7 @@ const options = {
 
 export const useFetchFeed = () => {
   const [videos, setVideos] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
