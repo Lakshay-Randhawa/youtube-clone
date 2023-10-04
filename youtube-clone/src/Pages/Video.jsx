@@ -109,6 +109,9 @@ const Subscribe = styled.button`
 const Video = () => {
   const { id } = useParams();
 
+  const videoLink = `https://www.youtube.com/watch?v=${id}`;
+  console.log(videoLink);
+
   // useEffect(() => {}, [id]);
 
   const fetchVideoDetails = async () => {};
@@ -118,13 +121,13 @@ const Video = () => {
       <Content>
         <VideoWrapper>
           <iframe
+            allowFullScreen
             width="100%"
             height="720"
-            src="https://www.youtube.com/embed/k3Vfj-e1Ma4"
+            src={videoLink}
             title="YouTube video player"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
           />
         </VideoWrapper>
         <Title>Test Video</Title>

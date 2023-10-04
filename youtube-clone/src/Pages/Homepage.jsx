@@ -12,9 +12,10 @@ const Container = styled.div`
 
 const Home = () => {
   const dummyData = dummyVideos.contents;
-  const { videos, isLoading } = useFetchFeed();
+  // const { videos, isLoading } = useFetchFeed();
 
-  console.log({ videos, isLoading });
+  const videos = dummyData;
+  const isLoading = false;
 
   return (
     <Container>
