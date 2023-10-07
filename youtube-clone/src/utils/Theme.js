@@ -1,6 +1,6 @@
 const darkTheme = {
-  bg: "#181818",
-  bgLighter: "#202020",
+  bg: "black",
+  bgLighter: "black",
   text: "white",
   textSoft: "#aaaaaa",
   soft: "#373737",
