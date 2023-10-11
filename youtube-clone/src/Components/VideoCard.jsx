@@ -1,105 +1,60 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
-import placeholder from "../assets/userPlaceHolder.png";
 import { abbreviateNumber } from "js-abbreviation-number";
+import { Link } from "react-router-dom";
+import { BsFillCheckCircleFill } from "react-icons/bs";
 
-const Container = styled.div`
-  width: ${(props) => props.type !== "sm" && "360px"};
-  margin-bottom: ${(props) => (props.type === "sm" ? "10px" : "45px")};
-  cursor: pointer;
-  display: ${(props) => props.type === "sm" && "flex"};
-  gap: 10px;
-`;
+import VideoLength from "../shared/videoLength";
 
-const Image = styled.img`
-  width: 100%;
-  height: ${(props) => (props.type === "sm" ? "120px" : "202px")};
-  background-color: #999;
-  flex: 1;
-`;
-
-const Details = styled.div`
-  display: flex;
-  margin-top: ${(props) => props.type !== "sm" && "16px"};
-  gap: 12px;
-  flex: 1;
-`;
-
-const ChannelImage = styled.img`
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background-color: #999;
-  display: ${(props) => props.type === "sm" && "none"};
-`;
-
-const Texts = styled.div``;
-
-const Title = styled.h1`
-  font-size: 16px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.text};
-`;
-
-const ChannelName = styled.h2`
-  font-size: 14px;
-  font-weight: 800;
-  cursor: pointer;
-  color: ${({ theme }) => theme.textSoft};
-  margin: 9px 0px;
-  :hover {
-    text-decoration: underline;
-  }
-`;
-
-const PublishTime = styled.span`
-  color: ${({ theme }) => theme.textSoft};
-`;
-
-const Info = styled.span`
-  font-size: 14px;
-  color: ${({ theme }) => theme.textSoft};
-`;
-
-const InfoWrapper = styled.div`
-  display: flex;
-  justify-items: space-between;
-  width: 100%;
-  gap: 10px;
-`;
-
-const Card = (props) => {
-  const {
-    type,
-    authorAvatar,
-    title,
-    thumbnail,
-    channelName,
-    views,
-    id,
-    publishedAt,
-  } = props;
-
-  return (
-    <Link to={`/:${id}`} style={{ textDecoration: "none" }}>
-      <Container type={type}>
-        <Image type={type} src={thumbnail} alt="Video Image" />
-        <Details type={type}>
-          <ChannelImage type={type} src={authorAvatar} alt="Channel Image" />
-          <Texts>
-            <Title>{title}</Title>
-            <ChannelName>{channelName}</ChannelName>
-            <InfoWrapper>
-              <Info>{`${abbreviateNumber(views, 2)} views`}</Info>
-              <PublishTime>{publishedAt}</PublishTime>
-            </InfoWrapper>
-             
-          </Texts>
-        </Details>
-      </Container>
-    </Link>
-  );
+const VideoCard = ({ video }) => {
+    return (
+        <Link to={`/video/${video?.videoId}`}>
+            <div className="flex flex-col mb-8">
+                <div className="relative h-48 md:h-40 md:rounded-xl overflow-hidden">
+                    <img
+                        className="h-full w-full object-cover"
+                        src={video?.thumbnails[0]?.url}
+                    />
+                    {video?.lengthSeconds && (
+                        <VideoLength time={video?.lengthSeconds} />
+                    )}
+                </div>
+                <div className="flex text-white mt-3">
+                    <div className="flex items-start">
+                        <div className="flex h-9 w-9 rounded-full overflow-hidden">
+                            <img
+                                className="h-full w-full object-cover"
+                                src={video?.author?.avatar[0]?.url}
+                            />
+                        </div>
+                    </div>
+                    <div className="flex flex-col ml-3 overflow-hidden">
+                        <span className="text-sm font-bold line-clamp-2">
+                            {video?.title}
+                        </span>
+                        <span className="text-[12px] font-semibold mt-2 text-white/[0.7] flex items-center">
+                            {video?.author?.title}
+                            {video?.author?.badges[0]?.type ===
+                                "VERIFIED_CHANNEL" && (
+                                <BsFillCheckCircleFill className="text-white/[0.5] text-[12px] ml-1" />
+                            )}
+                        </span>
+                        <div className="flex text-[12px] font-semibold text-white/[0.7] truncate overflow-hidden">
+                            <span>{`${abbreviateNumber(
+                                video?.stats?.views,
+                                2
+                            )} views`}</span>
+                            <span className="flex text-[24px] leading-none font-bold text-white/[0.7] relative top-[-10px] mx-1">
+                                .
+                            </span>
+                            <span className="truncate">
+                                {video?.publishedTimeText}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </Link>
+    );
 };
 
-export default Card;
+export default VideoCard;
